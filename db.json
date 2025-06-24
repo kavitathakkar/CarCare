@@ -1,0 +1,28 @@
+{
+  "bookings": [
+    {
+      "serviceName": "Car Wash",
+      "bookedOn": "2025-05-30",
+      "emailId": "Dummy@gmail.com",
+      "id": "1"
+    },
+    {
+      "serviceName": "Clutch Replacement",
+      "bookedOn": "2025-04-16",
+      "emailId": "Tom@gmail.com",
+      "id": "2"
+    },
+    {
+      "serviceName": "Wheel Alignment",
+      "bookedOn": "2025-06-20",
+      "emailId": "Rocky@gmail.com",
+      "id": "3"
+    },
+    {
+      "id": "f839",
+      "serviceName": "Denting and Painting",
+      "bookedOn": "2025-06-25",
+      "emailId": "k@gmail.com"
+    }
+  ]
+}
