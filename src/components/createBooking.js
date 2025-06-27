@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { validation } from "../validators/validation";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 let url = "http://localhost:3000/bookings";
 
@@ -22,6 +23,8 @@ const BookingComponent = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [valid, setValid] = useState(false);
 
+    const navigate = useNavigate();
+
     const messages = {
         EMAILID_ERROR: "Please enter valid email",
         SERVICE_NAME_ERROR: "Please select Service name",
@@ -32,20 +35,29 @@ const BookingComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (state.bookedOn === '' || state.emailId === '' || state.serviceName === '') {
+
+        if (!state.serviceName || !state.bookedOn || !state.emailId) {
             setMandatory(true);
-        } else {
-            setMandatory(false);
-            axios.post(url, state)
-                .then((res) => {
-                    setSuccessMessage(`Booking is successfully created with bookingId: ${res.data.id}`);
-                    setErrorMessage('');
-                })
-                .catch(() => {
-                    setErrorMessage(messages.ERROR);
-                    setSuccessMessage('');
-                });
+            return;
         }
+
+        setMandatory(false);
+
+        axios.post(url, state)
+            .then((res) => {
+                setSuccessMessage(`Booking is successfully created with bookingId: ${res.data.id}`);
+                setErrorMessage('');
+                setState({ serviceName: "", bookedOn: "", emailId: "" }); // Reset form
+
+                // Redirect after short delay
+                setTimeout(() => {
+                    navigate("/allBookings");
+                }, 1500);
+            })
+            .catch(() => {
+                setErrorMessage(messages.ERROR);
+                setSuccessMessage('');
+            });
     };
 
     const handleChange = (event) => {
@@ -82,11 +94,7 @@ const BookingComponent = () => {
 
         setFormErrors(updatedErrors);
 
-        // Update validity
-        const allValid =
-            updatedErrors.serviceNameError === "" &&
-            updatedErrors.emailIdError === "" &&
-            updatedErrors.bookedOnError === "";
+        const allValid = Object.values(updatedErrors).every(err => err === "");
         setValid(allValid);
     };
 
@@ -122,10 +130,7 @@ const BookingComponent = () => {
                                             <option value="Wheel Alignment">Wheel Alignment</option>
                                         </select>
                                         {formErrors.serviceNameError && (
-                                            <span
-                                                data-testid="serviceName-Error"
-                                                className="text-danger"
-                                            >
+                                            <span data-testid="serviceName-Error" className="text-danger">
                                                 {formErrors.serviceNameError}
                                             </span>
                                         )}
@@ -164,10 +169,7 @@ const BookingComponent = () => {
                                             required
                                         />
                                         {formErrors.bookedOnError && (
-                                            <span
-                                                data-testid="bookingDate-error"
-                                                className="text-danger"
-                                            >
+                                            <span data-testid="bookingDate-error" className="text-danger">
                                                 {formErrors.bookedOnError}
                                             </span>
                                         )}
@@ -177,7 +179,6 @@ const BookingComponent = () => {
                                     <button
                                         data-testid="button"
                                         type="submit"
-                                        name="active"
                                         className="btn btn-primary"
                                         style={{
                                             color: "white",

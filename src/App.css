@@ -104,3 +104,265 @@ td {
 .view {
   margin: 10px !important;
 }
+
+
+
+/* General Layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 12px 30px;
+  border-radius: 10px;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #ffc107;
+}
+
+/* Form Container */
+.CreateBooking {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.card {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: grey !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 20px !important;
+  border-radius: 12px 12px 0 0;
+  text-align: center;
+}
+
+/* Form Fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="email"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #6c757d !important;
+}
+
+button.btn-primary {
+  background-color: #198754;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+button.btn-primary:hover {
+  background-color: #157347;
+}
+
+.text-danger,
+.text-success {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* All Bookings Layout */
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 20px auto;
+  padding: 0 30px;
+}
+
+.card-body {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 0 0 10px 10px;
+}
+
+.card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: grey;
+}
+
+.card p {
+  margin: 5px 0;
+  color: #212529;
+}
+
+button.btn-secondary {
+  background-color: #dc3545;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+button.btn-secondary:hover {
+  background-color: #bb2d3b;
+}
+
+/* --- Feedback Messages --- */
+.text-success {
+  color: #198754;
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.text-danger {
+  color: #dc3545;
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* --- Booking Form Button --- */
+button.btn-primary {
+  background-color: #198754;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-primary:hover {
+  background-color: #157347;
+}
+
+/* --- Delete Button --- */
+button.btn-secondary {
+  background-color: #dc3545;
+  border: none;
+  padding: 8px 14px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-secondary:hover {
+  background-color: #bb2d3b;
+}
+
+/* --- Card Layout --- */
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 20px;
+  margin: 20px auto;
+  padding: 0 30px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  background-color: grey !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 18px !important;
+  padding: 10px 15px;
+  border-radius: 12px 12px 0 0;
+}
+
+.card-body {
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .nav-item {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
